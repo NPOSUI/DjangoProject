@@ -26,7 +26,7 @@ class Order(models.Model):
     customer = models.ForeignKey(User, on_delete=models.PROTECT)
     # 产品，多对多
     product = models.ManyToManyField(Product, through='OrderProduct')
-    # 订单时间
+    # 订单创建时间
     date = models.DateTimeField(default=None)
 
 
@@ -38,7 +38,31 @@ class OrderProduct(models.Model):
     # 产品
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
     # 数量
-    amount = models.IntegerField(default=None)
+    amount = models.IntegerField(default=1)
+
+
+# 购物车
+class ShopCar(models.Model):
+
+    # 购物车名
+    name = models.CharField(max_length=100)
+    # 顾客
+    customer = models.ForeignKey(User, on_delete=models.PROTECT)
+    # 产品
+    product = models.ManyToManyField(Product, through="ShopCarProduct")
+    # 购物车过期时间
+    date = models.DateTimeField(default=None)
+
+
+# 购物车与产品的中间表
+class ShopCarProduct(models.Model):
+
+    # 购物车
+    shopcar = models.ForeignKey(ShopCar, on_delete=models.PROTECT)
+    # 产品
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    # 数量
+    amount = models.IntegerField(default=1)
 
 
 class Analysis(models.Model):

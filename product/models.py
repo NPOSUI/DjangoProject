@@ -5,7 +5,7 @@ import datetime
 class Comment(models.Model):
 
     # id
-    id = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True,)
     # 评论类型
     co_type = models.CharField(max_length=10)
     # 内容
