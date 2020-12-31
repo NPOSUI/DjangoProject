@@ -36,3 +36,5 @@ class Product(models.Model):
     com_id = models.ForeignKey(Comment, on_delete=models.PROTECT)
     # 图片
     # pic = models.ImageField()
+
+

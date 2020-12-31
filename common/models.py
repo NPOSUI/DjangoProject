@@ -65,7 +65,12 @@ class ShopCarProduct(models.Model):
     amount = models.IntegerField(default=1)
 
 
-class Analysis(models.Model):
+# 公告
+class NoticeBoard(models.Model):
 
-    # 订单
-    order = models.ForeignKey(Order, on_delete=models.PROTECT)
+    # 公告名称
+    name = models.CharField(max_length=100)
+    # 内容
+    content = models.CharField(max_length=500)
+    # 公告过期时间
+    # date = models.TimeField()
