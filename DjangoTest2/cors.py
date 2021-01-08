@@ -26,6 +26,6 @@ class CORSMiddleware(MiddlewareMixin):
         response['Access-Control-Allow-Headers'] = "Content-Type"
 
         # 允许DELETE,PUT
-        response['Access-Control-Allow-Methods'] = "DELETE,PUT"
+        response['Access-Control-Allow-Methods'] = "POST"
 
         return response

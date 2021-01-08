@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from common.views import customer_register
 from tes.views import listener
 from mgr.views import resdata
 
@@ -27,4 +27,6 @@ urlpatterns = [
     path('test/', listener),
 
     path('mgrtest/', resdata),
+
+    path('register/', customer_register),
 ]
