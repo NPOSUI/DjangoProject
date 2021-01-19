@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+import datetime
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,7 +41,28 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'product.apps.ProductConfig',
     'sta_ana.apps.StaAnaConfig',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
+
+# rest_framework token认证方式
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated', ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+# simple_jwt token配置项
+SIMPLE_JWT = {
+    # 设置token令牌有效时间
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=15),
+    # 设置刷新令牌有效时间
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=15),
+}
+
+# 自动认证的用户表
+AUTH_USER_MODEL = 'common.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -113,7 +135,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# 修改了时区为亚洲上海
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
