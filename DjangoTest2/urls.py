@@ -18,6 +18,7 @@ from django.urls import path
 from common.views import customer_register
 from tes.views import listener
 from mgr.views import resdata
+# from rest_framework_simplejwt import views as jwt_views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
@@ -30,6 +31,10 @@ urlpatterns = [
     path('mgrtest/', resdata),
 
     path('register/', customer_register),
+
+    # path('token/', jwt_views.TokenObtainPairView.as_view(), name='token_create'),
+
+    # path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 
     path('token/', TokenObtainPairView.as_view(), name="token_obtain_pair"),
 
